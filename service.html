@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدماتنا القانونية | نهج الترافع للمحاماة والاستشارات القانونية</title>
+  <meta name="description" content="خدمات نهج الترافع القانونية المتخصصة — قانون الشركات، التقاضي، صياغة العقود، وخدمات المستثمر الأجنبي في المملكة العربية السعودية.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Services Hero ───────────────────────────────── */
+    .svc-hero {
+      padding-block: calc(var(--nav-h) + 4rem) 5rem;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(200,167,93,.09) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+    .svc-hero__grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: flex-end;
+      gap: 3.5rem;
+    }
+    .svc-hero__title { color: var(--navy); margin-bottom: .625rem; }
+    .svc-hero__title em { color: var(--gold); font-style: italic; }
+    .svc-hero__img {
+      border-radius: var(--r);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/3;
+    }
+    .svc-hero__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(.35);
+      transition: filter var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
+    }
+    .svc-hero__img:hover img { filter: grayscale(0); transform: scale(1.03); }
+
+    /* ── Service List ──────────────────────────────── */
+    .service-list { display: flex; flex-direction: column; gap: 2px; }
+    .service-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      transition: box-shadow var(--t) var(--ease), border-color var(--t) var(--ease);
+    }
+    .service-item:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-gold);
+    }
+    .service-item__inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: start;
+      gap: 2rem;
+      padding: 2.25rem 2.5rem;
+    }
+    .service-item__num {
+      font-size: .6875rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      padding-top: .375rem;
+      white-space: nowrap;
+    }
+    .service-item__content { flex: 1; }
+    .service-item__title { font-size: 1.375rem; font-weight: 800; color: var(--navy); margin-bottom: .625rem; }
+    .service-item__desc { font-size: .9375rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.125rem; }
+    .service-item__tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .service-tag {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: .25rem .675rem;
+      background: var(--gold-tint);
+      color: var(--gold-dark);
+      border-radius: var(--r-xs);
+      border: 1px solid var(--border-gold);
+      letter-spacing: .04em;
+    }
+    .service-item__img {
+      width: 180px;
+      height: 130px;
+      border-radius: var(--r);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .service-item__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(.5);
+      transition: filter var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
+    }
+    .service-item:hover .service-item__img img { filter: grayscale(0); transform: scale(1.06); }
+
+    /* ── Process ──────────────────────────────────── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 26px;
+      right: calc(12.5% + 1rem);
+      left: calc(12.5% + 1rem);
+      height: 1px;
+      background: linear-gradient(to left, var(--gold), rgba(200,167,93,.2));
+      pointer-events: none;
+    }
+    .process-step { text-align: center; padding-top: .5rem; }
+    .process-step__dot {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-size: 1.25rem;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+      transition: background var(--t) var(--ease), color var(--t) var(--ease);
+    }
+    .process-step:hover .process-step__dot { background: var(--gold); color: var(--white); }
+    .process-step h4 { font-size: 1rem; margin-bottom: .375rem; }
+    .process-step p { font-size: .875rem; }
+
+    /* ── CTA ──────────────────────────────────────── */
+    .svc-cta {
+      background: var(--navy);
+      border-radius: var(--r-md);
+      padding: clamp(3rem, 7vw, 5.5rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .svc-cta h2 { color: var(--white); margin-bottom: .75rem; position: relative; }
+    .svc-cta p { color: var(--gold); font-size: 1.0625rem; margin-bottom: 2rem; position: relative; }
+    .svc-cta__btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; position: relative; }
+    .svc-cta__glow {
+      position: absolute; width: 350px; height: 350px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,167,93,.13), transparent 70%);
+      pointer-events: none;
+    }
+    .svc-cta__glow--1 { top: -120px; right: -80px; }
+    .svc-cta__glow--2 { bottom: -120px; left: -80px; }
+
+    /* ── Responsive ──────────────────────────────── */
+    @media (max-width: 1024px) {
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid::before { display: none; }
+    }
+    @media (max-width: 900px) {
+      .svc-hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .svc-hero { padding-block: calc(var(--nav-h) + 2rem) 3.5rem; }
+      .svc-hero__img { aspect-ratio: 16/9; }
+      .service-item__inner { grid-template-columns: auto 1fr; }
+      .service-item__img { display: none; }
+    }
+    @media (max-width: 560px) {
+      .service-item__inner { grid-template-columns: 1fr; gap: 1rem; padding: 1.75rem; }
+      .svc-cta__btns .btn { width: 100%; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ═══════ NAV ═══════ -->
+  <header class="nav" id="site-nav">
+    <div class="nav__topbar">
+      <div class="nav__topbar-inner">
+        <a href="Home.html" class="nav__logo">
+          <span class="nav__logo-icon">
+            <span class="mso mso--fill" style="font-size:1.1rem;">balance</span>
+          </span>
+          نهج الترافع
+        </a>
+        <nav class="nav__links" aria-label="القائمة الرئيسية">
+          <a href="Home.html" class="nav__link">الرئيسية</a>
+          <a href="about.html" class="nav__link">من نحن</a>
+          <a href="service.html" class="nav__link active">خدماتنا</a>
+          <a href="contact.html" class="nav__link">تواصل معنا</a>
+        </nav>
+        <div class="nav__ctas">
+          <a href="tel:+966534029797" class="btn btn--primary btn--sm">اتصل بنا</a>
+          <a href="https://wa.me/966534029797" class="btn btn--outline-gold btn--sm">واتساب</a>
+        </div>
+        <button class="nav__menu-btn" id="menu-btn" aria-label="فتح القائمة" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="القائمة الرئيسية" aria-hidden="true">
+    <div class="nav-overlay__glow2"></div>
+    <div class="nav-overlay__header">
+      <a href="Home.html" class="nav-overlay__logo">
+        <span class="nav-overlay__logo-icon">
+          <span class="mso mso--fill" style="font-size:1rem;">balance</span>
+        </span>
+        نهج الترافع
+      </a>
+      <button class="nav-overlay__close" id="menu-close" aria-label="إغلاق القائمة">
+        <span class="mso">close</span>
+      </button>
+    </div>
+    <div class="nav-overlay__main">
+      <nav class="nav-overlay__links">
+        <a href="Home.html" class="nav-overlay__link">
+          <span class="nav-overlay__link-num">01</span>
+          <span class="nav-overlay__link-text">الرئيسية</span>
+          <span class="mso nav-overlay__link-arrow">arrow_back</span>
+        </a>
+        <a href="about.html" class="nav-overlay__link">
+          <span class="nav-overlay__link-num">02</span>
+          <span class="nav-overlay__link-text">من نحن</span>
+          <span class="mso nav-overlay__link-arrow">arrow_back</span>
+        </a>
+        <a href="service.html" class="nav-overlay__link active">
+          <span class="nav-overlay__link-num">03</span>
+          <span class="nav-overlay__link-text">خدماتنا</span>
+          <span class="mso nav-overlay__link-arrow">arrow_back</span>
+        </a>
+        <a href="contact.html" class="nav-overlay__link">
+          <span class="nav-overlay__link-num">04</span>
+          <span class="nav-overlay__link-text">تواصل معنا</span>
+          <span class="mso nav-overlay__link-arrow">arrow_back</span>
+        </a>
+      </nav>
+    </div>
+    <div class="nav-overlay__footer">
+      <div class="nav-overlay__footer-ctas">
+        <a href="tel:+966534029797" class="btn btn--gold"><span class="mso mso--fill mso--sm">call</span> اتصل بنا الآن</a>
+        <a href="https://wa.me/966534029797" class="btn btn--ghost"><span class="mso mso--fill mso--sm">chat</span> واتساب</a>
+      </div>
+      <div class="nav-overlay__footer-info">
+        <span><span class="mso">location_on</span> الرياض، حي العليا</span>
+        <span><span class="mso">call</span> <span class="dir-ltr">0534029797</span></span>
+        <span><span class="mso">mail</span> <span class="dir-ltr">info@nahj-law.sa</span></span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ═══════ HERO ═══════ -->
+    <section class="svc-hero">
+      <div class="container">
+        <div class="svc-hero__grid">
+          <div>
+            <div class="badge badge--gold reveal" style="margin-bottom:1.25rem;">
+              التميز القانوني
+            </div>
+            <h1 class="display svc-hero__title reveal delay-1">
+              حلول قانونية<br>
+              <em>بمنظور استراتيجي</em>
+            </h1>
+            <div class="gold-rule reveal delay-2"></div>
+            <p style="font-size:1.0625rem; color:var(--text-muted); max-width:46ch; line-height:1.85;" class="reveal delay-2">
+              نقدم منظومة متكاملة من الخدمات القانونية المصممة لحماية مصالحك التجارية وتعزيز استثماراتك، مع الالتزام بأعلى معايير الدقة والنزاهة المهنية في قلب العاصمة الرياض.
+            </p>
+          </div>
+          <div class="svc-hero__img reveal delay-1">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz-EAM-dB9Lm3JLqu4FlRYgkxLsDUuc3tIXJlkaVLjThq39H3FNkh4f-JA1yO3mHXQPTHKgB41kz3UpAEGAd_cZgIdSiB3ExSoyaNUSTr8twVDlespWPNL0F4xHCklh9PUMG9QzUP3TzxaGXtDvsswymfksAR_7SJjy137SoCqRG1barL0BNrxEZMS3IpT-95mJQKQjM3SVxR1buV96UJFqVnHqb19oA_uCOSfs2laGQyGrQR3WBzMuoA44eyJMgKdOzQ4S4Axt-M"
+                 alt="محامي سعودي في مكتب فاخر">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ SERVICES LIST ═══════ -->
+    <section class="section section--white">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="sec-label">منظومة خدماتنا</span>
+          <h2 class="sec-title">كل ما تحتاجه من دعم قانوني</h2>
+          <div class="gold-rule"></div>
+        </div>
+
+        <div class="service-list">
+          <!-- 01: Corporate Law -->
+          <div class="service-item reveal">
+            <div class="service-item__inner">
+              <div class="service-item__num">01</div>
+              <div class="service-item__content">
+                <div class="icon-box icon-box--gold" style="margin-bottom:1.125rem;">
+                  <span class="mso">business_center</span>
+                </div>
+                <h3 class="service-item__title">قانون الشركات والمؤسسات</h3>
+                <p class="service-item__desc">تأسيس الشركات والتحول التجاري وحوكمة الشركات وفقاً للأنظمة السعودية الحديثة. نرافق نمو أعمالكم من الفكرة إلى الريادة في السوق السعودي والإقليمي.</p>
+                <div class="service-item__tags">
+                  <span class="service-tag">تأسيس الكيانات التجارية</span>
+                  <span class="service-tag">الاندماج والاستحواذ</span>
+                  <span class="service-tag">هيكلة رأس المال</span>
+                  <span class="service-tag">حوكمة الشركات</span>
+                </div>
+              </div>
+              <div class="service-item__img">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgurdVgtV5RYXSSjNHJhHvbA1lLZmyOEYDHc-Q98Rr68FfhpJrGaG1rP1eaT0BXTiak4ZYUej4XKC0UdjklSq7p4g63UhVqFs4JBfuIyWA22BR3o1XAa5roO2tQStK-8S7Bb8Mc2TKbnRXcBVY4ALvZW2rZc_d6hadWKtSN4Kgekzn5sBnFSAPTnty_0YsAoo9jaeQTIiiBoqHmCDHGhsXczhmlpA0sk4c6AiXikmJ3gB5jGVx35YP0tkxfk17rkyo1BewfEkuqgE"
+                     alt="قانون الشركات">
+              </div>
+            </div>
+          </div>
+
+          <!-- 02: Foreign Investor -->
+          <div class="service-item reveal delay-1">
+            <div class="service-item__inner">
+              <div class="service-item__num">02</div>
+              <div class="service-item__content">
+                <div class="icon-box icon-box--gold" style="margin-bottom:1.125rem;">
+                  <span class="mso">public</span>
+                </div>
+                <h3 class="service-item__title">خدمات المستثمر الأجنبي</h3>
+                <p class="service-item__desc">تسهيل دخول الاستثمارات الأجنبية للسوق السعودي بما يتوافق مع رؤية 2030، استخراج تراخيص "ميزا"، وتقديم الدعم القانوني المتكامل للمستثمرين الدوليين.</p>
+                <div class="service-item__tags">
+                  <span class="service-tag">تراخيص ميزا</span>
+                  <span class="service-tag">الاستثمار الأجنبي</span>
+                  <span class="service-tag">رؤية 2030</span>
+                  <span class="service-tag">أنظمة العمل الدولية</span>
+                </div>
+              </div>
+              <div class="service-item__img">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOX0oLNJFproGipPSOMU397Nk6cAx9nnyyvgRc5XL5-UcMxTJAHNLz8bCTHD5T_mX-mFmYHuZigSiegWQVfu749MMvYBtbJvSuTFX4bq9tzb37Oro6OqRpUVr83Om5_mC65D3anhDBvrITLD0BFj0fqdQhgqfAxurkJdswr219tPa_PIfkiUDBRYS_waOxdXOkt1Jk_KbJvljXChcYyhXDCw4RTyaPfCHMI1cjFsQo1JcipFb8KfKtP7Kv7NOI9SIW8sQ50MaeEdc"
+                     alt="مدينة الرياض">
+              </div>
+            </div>
+          </div>
+
+          <!-- 03: Litigation -->
+          <div class="service-item reveal delay-2">
+            <div class="service-item__inner">
+              <div class="service-item__num">03</div>
+              <div class="service-item__content">
+                <div class="icon-box icon-box--gold" style="margin-bottom:1.125rem;">
+                  <span class="mso">gavel</span>
+                </div>
+                <h3 class="service-item__title">التقاضي وتسوية المنازعات</h3>
+                <p class="service-item__desc">تمثيل مهني أمام كافة المحاكم السعودية واللجان القضائية، مع التركيز على الحلول البديلة والتحكيم التجاري لتسوية النزاعات بأسرع وقت وأقل تكلفة.</p>
+                <div class="service-item__tags">
+                  <span class="service-tag">التمثيل أمام المحاكم</span>
+                  <span class="service-tag">التحكيم التجاري</span>
+                  <span class="service-tag">الوساطة والتسوية</span>
+                </div>
+              </div>
+              <div class="service-item__img">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzVQnTPWpXV5nZ6SkQEAoKwndOhOuBPnELD-UJPn4ZYu8m3W-_UoBLnxNJVoeV9dTtMlWCSjkVYMuKRVSGYUqUd1YSrZylIV6o9KTHOMaXAhGch_9oDsvcrDEoIiQiyMgMj-ZnOVq_TrWGY3LyY48lp4Ggei3AGLb_Zo-Ck_cSlLiPmuFCYsyUKgOkKDA0zPYZZ8nWNB0MLWRuPR0UYy-haz4hfRPbRc0vZ9BeqZ6vIyRQRhTo7jFHY9lJm4Hn6NmctQklbjTTYkQ"
+                     alt="محكمة سعودية">
+              </div>
+            </div>
+          </div>
+
+          <!-- 04: Contracts -->
+          <div class="service-item reveal">
+            <div class="service-item__inner">
+              <div class="service-item__num">04</div>
+              <div class="service-item__content">
+                <div class="icon-box icon-box--gold" style="margin-bottom:1.125rem;">
+                  <span class="mso">description</span>
+                </div>
+                <h3 class="service-item__title">صياغة العقود والاتفاقيات</h3>
+                <p class="service-item__desc">صياغة ومراجعة كافة العقود التجارية والمدنية وفقاً للأنظمة السعودية المعمول بها، لضمان أعلى درجات الحماية القانونية ومنع النزاعات المستقبلية.</p>
+                <div class="service-item__tags">
+                  <span class="service-tag">العقود التجارية</span>
+                  <span class="service-tag">عقود العمل</span>
+                  <span class="service-tag">اتفاقيات الشراكة</span>
+                </div>
+              </div>
+              <div class="service-item__img">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSH7Lhiy6Tun1HDeYk47PfbRYw72Mfv5trIVbu4c6RlSu-Jt5iHFue0FD8m5xjULMdVGoN_i6yCe9QMidZkES_upo13D6tbvWz8HhxOUbTEeiJJDK8crbWD8Egz0t_cO29flhyPpHA-LoXa6vf4TAC7ieGW3lUOIibzcXPU5wy4oipiHrGJgfaT1LasllRGSFDYyAMWL2xMeFu-FWNwjg4DnS9NAFnHXBBzjfhUsHUuNBSJhgCHRdRAOUnydcobnYwYjlCNxr2ue4"
+                     alt="وثيقة قانونية">
+              </div>
+            </div>
+          </div>
+
+          <!-- 05: Consultations -->
+          <div class="service-item reveal delay-1">
+            <div class="service-item__inner">
+              <div class="service-item__num">05</div>
+              <div class="service-item__content">
+                <div class="icon-box icon-box--gold" style="margin-bottom:1.125rem;">
+                  <span class="mso">psychology</span>
+                </div>
+                <h3 class="service-item__title">الاستشارات القانونية المتخصصة</h3>
+                <p class="service-item__desc">تقديم الرأي القانوني المتخصص في كافة القضايا والمستجدات النظامية، لدعم اتخاذ القرار الصحيح في الوقت المناسب، متاحة حضورياً وعن بُعد.</p>
+                <div class="service-item__tags">
+                  <span class="service-tag">استشارة حضورية</span>
+                  <span class="service-tag">استشارة عن بُعد</span>
+                  <span class="service-tag">متاح أونلاين</span>
+                </div>
+              </div>
+              <div class="service-item__img">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUfIWJ4D_XI2wl5tZh2OjALSij1Hq-8F7iFtTuouXmv3oMZmtxO30knNEzgROE2DlBwPpVY-6IldnAr2HLaagAHegjwCJNCAo8KrzNwOBmAKFnfQKkdZ_msQsfRu0yPx0iDeQv0ZBKnqZx1-U3X6lHMgGP7LqeNrq1_1FlPpUVAtB-eyJOGR2EZaZqNMU7omFIh9bEnKgideNpRncN34olc0wj6WbBkiQtxje4gGor6hnghuu8gxE3IAHmuliCues5Cr8UbQocYs"
+                     alt="قاعة اجتماعات في الرياض">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ PROCESS ═══════ -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="sec-head sec-head--center reveal">
+          <span class="sec-label">كيف نعمل</span>
+          <h2 class="sec-title">خطوات التعامل معنا</h2>
+          <div class="gold-rule gold-rule--center"></div>
+          <p class="sec-intro">نتبع منهجية واضحة ومُهيكلة لضمان أفضل النتائج لعملائنا.</p>
+        </div>
+        <div class="process-grid">
+          <div class="process-step reveal">
+            <div class="process-step__dot">
+              <span class="mso">chat_bubble</span>
+            </div>
+            <h4>التواصل الأولي</h4>
+            <p>تواصل معنا وصف قضيتك أو استشارتك المطلوبة.</p>
+          </div>
+          <div class="process-step reveal delay-1">
+            <div class="process-step__dot">
+              <span class="mso">search</span>
+            </div>
+            <h4>الدراسة والتحليل</h4>
+            <p>نقوم بدراسة وضعك القانوني بدقة وتحديد الاستراتيجية المثلى.</p>
+          </div>
+          <div class="process-step reveal delay-2">
+            <div class="process-step__dot">
+              <span class="mso">handshake</span>
+            </div>
+            <h4>الاتفاق والتعاقد</h4>
+            <p>نضع خطة عمل واضحة ونحدد الجدول الزمني والتكاليف.</p>
+          </div>
+          <div class="process-step reveal delay-3">
+            <div class="process-step__dot">
+              <span class="mso">verified</span>
+            </div>
+            <h4>التنفيذ والمتابعة</h4>
+            <p>تنفيذ الخطة القانونية وإبقائكم على اطلاع دائم بكل مستجد.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ CTA ═══════ -->
+    <section class="section">
+      <div class="container">
+        <div class="svc-cta reveal">
+          <div class="svc-cta__glow svc-cta__glow--1"></div>
+          <div class="svc-cta__glow svc-cta__glow--2"></div>
+          <h2>هل تحتاج إلى استشارة قانونية متخصصة؟</h2>
+          <p>فريقنا القانوني في الرياض جاهز لدراسة قضيتك وتقديم الحلول الأمثل</p>
+          <div class="svc-cta__btns">
+            <a href="tel:+966534029797" class="btn btn--gold btn--lg">احجز موعدك الآن</a>
+            <a href="https://wa.me/966534029797" class="btn btn--ghost btn--lg">تواصل عبر واتساب</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <div class="footer__brand-icon">
+              <span class="mso mso--fill">balance</span>
+            </div>
+            <div class="footer__brand-name">نهج الترافع للمحاماة</div>
+            <p class="footer__brand-desc">مكتب متخصص في تقديم الحلول القانونية النوعية للشركات والأفراد في المملكة، نسعى لترسيخ مبادئ العدالة وحماية المصالح.</p>
+          </div>
+          <div>
+            <h4 class="footer__col-head">روابط سريعة</h4>
+            <a href="Home.html" class="footer__link">الرئيسية</a>
+            <a href="about.html" class="footer__link">عن المكتب</a>
+            <a href="service.html" class="footer__link">خدماتنا القانونية</a>
+            <a href="contact.html" class="footer__link">تواصل معنا</a>
+          </div>
+          <div>
+            <h4 class="footer__col-head">معلومات قانونية</h4>
+            <a href="#" class="footer__link">سياسة الخصوصية</a>
+            <a href="#" class="footer__link">الشروط والأحكام</a>
+            <a href="#" class="footer__link">الأسئلة الشائعة</a>
+          </div>
+          <div>
+            <h4 class="footer__col-head">تواصل معنا</h4>
+            <div class="footer__contact-item">
+              <span class="mso">location_on</span>
+              الرياض، طريق الملك فهد، حي العليا
+            </div>
+            <div class="footer__contact-item">
+              <span class="mso">call</span>
+              <span class="dir-ltr">0534029797</span>
+            </div>
+            <div class="footer__contact-item">
+              <span class="mso">mail</span>
+              <span class="dir-ltr">info@nahj-law.sa</span>
+            </div>
+            <div class="footer__socials">
+              <a href="#" class="footer__social"><span class="mso mso--sm">public</span></a>
+              <a href="https://wa.me/966534029797" class="footer__social"><span class="mso mso--sm">chat</span></a>
+              <a href="#" class="footer__social"><span class="mso mso--sm">share</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        © 2024 نهج الترافع للمحاماة والاستشارات القانونية · جميع الحقوق محفوظة
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/966534029797" class="wa-float" aria-label="تواصل عبر واتساب">
+    <span class="mso mso--fill" style="font-size:1.5rem;">chat</span>
+  </a>
+
+  <script>
+    const siteNav = document.getElementById('site-nav');
+    const menuBtn = document.getElementById('menu-btn');
+    const menuClose = document.getElementById('menu-close');
+    const navOverlay = document.getElementById('nav-overlay');
+    function openNav() {
+      navOverlay.classList.add('is-open'); menuBtn.classList.add('is-open');
+      menuBtn.setAttribute('aria-expanded', 'true'); navOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNav() {
+      navOverlay.classList.remove('is-open'); menuBtn.classList.remove('is-open');
+      menuBtn.setAttribute('aria-expanded', 'false'); navOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    menuBtn.addEventListener('click', () => navOverlay.classList.contains('is-open') ? closeNav() : openNav());
+    menuClose.addEventListener('click', closeNav);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+    window.addEventListener('scroll', () => { siteNav.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
