@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html dir="rtl" lang="ar">
 
 <head>
@@ -190,7 +190,7 @@
 
     .stats__grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
 
@@ -504,10 +504,11 @@
       }
 
       .stats__grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
       }
 
-      .stats__item:nth-child(2)::after {
+      .stats__item::after {
         display: none;
       }
 
@@ -727,8 +728,8 @@
             <div class="stat__num" data-target="200">0</div>
             <div class="stat__lbl">شركة شريكة</div>
           </div>
-          <div class="stats__item reveal delay-3">
-            <div class="stat__num" data-suffix="%">98</div>
+          <div class="stats__item reveal delay-2">
+            <div class="stat__num" data-target="98" data-suffix="%">0</div>
             <div class="stat__lbl">رضا العملاء</div>
           </div>
         </div>
