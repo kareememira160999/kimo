@@ -226,14 +226,26 @@
     }
 
     .team-stats {
-      display: flex;
-      gap: 2rem;
-      padding: 1.375rem 1.5rem;
-      background: rgba(255, 255, 255, .07);
-      border: 1px solid rgba(255, 255, 255, .10);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .team-stats > div {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .08);
       border-radius: var(--r);
-      border-right: 3px solid var(--gold);
-      margin-top: 2rem;
+      padding: 1.75rem 1rem;
+      text-align: center;
+      transition: background var(--t) var(--ease), transform var(--t) var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-stats > div:hover {
+      background: rgba(255, 255, 255, .08);
+      transform: translateY(-3px);
     }
 
     .team-stat__num {
@@ -285,8 +297,8 @@
       }
 
       .team-stats {
+        grid-template-columns: 1fr;
         gap: 1rem;
-        flex-wrap: wrap;
       }
     }
 
@@ -524,12 +536,10 @@
                 <div class="team-stat__num">500+</div>
                 <div class="team-stat__lbl">قضية ناجحة</div>
               </div>
-              <div style="width:1px; background:rgba(255,255,255,.10);"></div>
               <div>
                 <div class="team-stat__num">200+</div>
                 <div class="team-stat__lbl">شركة شريكة</div>
               </div>
-              <div style="width:1px; background:rgba(255,255,255,.10);"></div>
               <div>
                 <div class="team-stat__num">98%</div>
                 <div class="team-stat__lbl">رضا العملاء</div>

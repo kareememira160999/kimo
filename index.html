@@ -191,23 +191,39 @@
     .stats__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      gap: 2rem;
     }
 
     .stats__item {
       text-align: center;
-      padding: 1rem;
+      padding: 2.5rem 2rem;
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: var(--r);
       position: relative;
+      transition: background var(--t) var(--ease), transform var(--t) var(--ease);
+      overflow: hidden;
     }
 
-    .stats__item:not(:last-child)::after {
+    .stats__item::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 20%;
-      bottom: 20%;
-      width: 1px;
-      background: rgba(255, 255, 255, .10);
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.5;
+      transition: opacity var(--t) var(--ease);
+    }
+
+    .stats__item:hover {
+      background: rgba(255, 255, 255, .06);
+      transform: translateY(-5px);
+    }
+    
+    .stats__item:hover::before {
+      opacity: 1;
     }
 
     /* ── Services ──────────────────────────────────── */
@@ -505,11 +521,7 @@
 
       .stats__grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .stats__item::after {
-        display: none;
+        gap: 1.25rem;
       }
 
       .services__grid {
